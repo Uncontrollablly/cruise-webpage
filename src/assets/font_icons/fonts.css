@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'cruise';
   src:
-    url('src/assets/font_icons/fonts/cruise.ttf?srz1pg') format('truetype'),
-    url('src/assets/font_icons/fonts/cruise.woff?srz1pg') format('woff'),
-    url('src/assets/font_icons/fonts/cruise.svg?srz1pg#cruise') format('svg');
+    url('./fonts/cruise.ttf') format('truetype'),
+    url('./fonts/cruise.woff') format('woff'),
+    url('./fonts/cruise.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
