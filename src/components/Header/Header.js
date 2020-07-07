@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo/logo.svg"
 import avatar from "../../assets/logo/avatar.jpg"
-import './Header.scss'
 
 export class Header extends React.Component {
     render() {

@@ -1,17 +1,22 @@
 .Menu {
   background-color: #2d4054;
-  color: white;
   display: flex;
   flex-direction: column;
   width: 270px;
 
   button {
-    height: 45px;
-    padding: 5px 25px;
-    background: transparent;
-    color: white;
-    border-style: none;
+    font-size: $menu-font-size;
+    color: $menu-font-color;
     text-align: start;
+    height: $menu-button-height;
+    padding: 5px 32px;
+    background: transparent;
+    border-style: none;
+
+    &:hover {
+      color: $menu-hover-font-color;
+      background-color: $menu-hover-button-color;
+    }
 
     &::before {
       margin-right: 15px;

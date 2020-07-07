@@ -1,5 +1,4 @@
 import React from "react";
-import './Menu.scss'
 
 export class Menu extends React.Component {
     render() {

@@ -5,6 +5,7 @@ import {Header} from "./components/Header/Header";
 import {Menu} from "./components/Menu/Menu";
 import {Content} from "./components/Content/Content";
 import {Footer} from "./components/Footer/Footer";
+import "./components/scss/index.scss"
 
 function App() {
   return (

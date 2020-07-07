@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
+  background-color: #FFFFFF;
   height: 70px;
 
   &::before {
@@ -11,11 +11,11 @@
   }
 
   .logo {
-    height: 40px;
+    height: $img-height;
   }
 
   .avatar {
-    height: 40px;
+    height: $img-height;
     border-radius: 50%;
   }
 }
