@@ -5,7 +5,7 @@ export class Footer extends React.Component {
     render() {
         return (
             <footer>
-                Footer to do
+                <p>© Copyright 2017 ThoughtWorks</p>
             </footer>
         );
     }
