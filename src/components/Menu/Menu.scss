@@ -1,0 +1,24 @@
+.Menu {
+  background-color: #2d4054;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+
+  button {
+    height: 45px;
+    padding: 5px 25px;
+    background: transparent;
+    color: white;
+    border-style: none;
+    text-align: start;
+
+    &::before {
+      margin-right: 15px;
+    }
+
+    &:first-child {
+      margin-top: 20px;
+    }
+  }
+}

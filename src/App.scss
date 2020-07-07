@@ -1,6 +1,13 @@
-.App {
+.cruise {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
   background-color: #f3f3f3;
-  text-align: center;
 }
 
 //@media (prefers-reduced-motion: no-preference) {
