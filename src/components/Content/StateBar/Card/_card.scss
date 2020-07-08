@@ -1,12 +1,27 @@
 .card {
   width: 270px;
   height: 118px;
+  position: relative;
 
   &:before {
     font-size: 144px;
+    text-align: center;
     color: white;
     opacity: 20%;
-    //text-align: center;
-    z-index: -1;
+    position: absolute;
+    top: -20px;
+    left: 63px;
+
+    animation: spin infinite 2s linear;
+
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
   }
 }

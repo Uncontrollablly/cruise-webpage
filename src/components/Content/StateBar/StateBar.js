@@ -6,12 +6,12 @@ export class StateBar extends React.Component {
         return (
             <div className='state-bar'>
                 <Card name='icon-cog' color='#FFB900'>
-                    <div>Building</div>
-                    <div>3</div>
+                    <div className='state'>Building</div>
+                    <div className='state-number'>3</div>
                 </Card>
                 <Card name='icon-coffee' color='#7FBC39'>
-                    <div>Idle</div>
-                    <div>2</div>
+                    <div className='state'>Idle</div>
+                    <div className='state-number'>2</div>
                 </Card>
                 <Card>
                     <table>

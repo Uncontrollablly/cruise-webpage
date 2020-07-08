@@ -6,7 +6,8 @@ export class Card extends React.Component {
             backgroundColor: this.props.color || "#FFFFFF"
         }
         return (
-            <div className={`card ${this.props.name}`}
+            <div
+                className={`card ${this.props.name}`}
                 style={backgroundColor}
             >
                 {this.props.children}
