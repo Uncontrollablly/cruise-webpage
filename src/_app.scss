@@ -1,13 +1,13 @@
 .cruise {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .content {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
 }
 
 //@media (prefers-reduced-motion: no-preference) {

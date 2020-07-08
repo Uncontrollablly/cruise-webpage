@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   background-color: #FFFFFF;
-  height: 70px;
+  height: $header-height;
 
   &::before {
     content:"";
