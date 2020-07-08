@@ -1,11 +1,11 @@
 import React from 'react';
-import './Content.scss'
+import {StateBar} from './StateBar/StateBar';
 
 export class Content extends React.Component {
     render() {
         return (
           <main className="main-content">
-              Content to do
+              <StateBar />
           </main>
         );
     }
