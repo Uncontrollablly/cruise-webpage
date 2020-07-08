@@ -1,0 +1,12 @@
+.card {
+  width: 270px;
+  height: 118px;
+
+  &:before {
+    font-size: 144px;
+    color: white;
+    opacity: 20%;
+    //text-align: center;
+    z-index: -1;
+  }
+}
