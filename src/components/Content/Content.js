@@ -1,6 +1,7 @@
 import React from 'react';
 import {StateBar} from './StateBar/StateBar';
 import {Navigation} from './Navigation/Navigation';
+import {Services} from './Services/Services';
 
 export class Content extends React.Component {
     render() {
@@ -9,7 +10,7 @@ export class Content extends React.Component {
               <div className="content-wrapper">
                   <StateBar />
                   <Navigation />
-                  {/*<Servives />*/}
+                  <Services />
               </div>
           </main>
         );
