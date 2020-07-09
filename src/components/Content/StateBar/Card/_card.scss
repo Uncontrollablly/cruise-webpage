@@ -1,15 +1,19 @@
 .card {
   display: inline-block;
-  margin-left: 30px;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+
   width: 270px;
   height: 118px;
   position: relative;
-  background-color: #FFFFFF;
+  background-color: $white-color;
 
   &:before {
     font-size: 144px;
     text-align: center;
-    color: white;
+    color: $white-color;
     opacity: 20%;
     position: absolute;
     top: -20px;

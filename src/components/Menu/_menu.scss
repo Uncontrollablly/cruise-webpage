@@ -1,5 +1,5 @@
 .Menu {
-  background-color: #2d4054;
+  background-color: $menu-background-color;
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -7,7 +7,7 @@
 
   button {
     font-size: $menu-font-size;
-    color: $menu-font-color;
+    color: $white-color;
     text-align: start;
     height: $menu-button-height;
     padding: 5px 32px;
@@ -15,7 +15,7 @@
     border-style: none;
 
     &:hover {
-      color: $menu-hover-font-color;
+      color: $hover-font-color;
       background-color: $menu-hover-button-color;
     }
 

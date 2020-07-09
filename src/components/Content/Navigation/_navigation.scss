@@ -1,0 +1,86 @@
+nav {
+  margin-top: 16px;
+  background-color: $white-color;
+  display: flex;
+  align-items: center;
+  height: 53px;
+
+  ul,
+  li {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    button {
+      font-family: $default-font-family;
+      font-size: $default-font-size;
+      width: 85px;
+      height: 50px;
+      background: transparent;
+      border-style: none;
+      border-right: 1px solid $default-light-grey;
+      border-bottom: 3px solid transparent;
+      &:hover {
+        color: $hover-font-color;
+        border-bottom: 3px solid $hover-font-color;
+      }
+    }
+  }
+
+  .icon-search {
+    margin-left: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      border-style: solid none none solid;
+      border-color: #E1E4E6
+    }
+
+    &:before {
+      font-size: $icon-size;
+      position: absolute;
+      left: 9px;
+      color: #A1A1A1;
+    }
+  }
+
+  .icon-th-card {
+    margin-left: auto;
+    margin-right: 20px;
+    border-style: none;
+    background-color: transparent;
+
+    &:before {
+      font-size: $icon-size;
+    }
+
+    &:hover {
+      color: $hover-font-color;
+    }
+  }
+
+  .icon-th-list {
+    margin-right: 25px;
+    border-style: none;
+    background-color: transparent;
+
+    &:before {
+      font-size: $icon-size;
+    }
+
+    &:hover {
+      color: $hover-font-color;
+    }
+  }
+
+  input {
+    background-color: $default-light-grey;
+    border-color: white;
+    width: 170px;
+    height: 30px;
+  }
+}

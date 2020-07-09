@@ -1,5 +1,6 @@
 import React from 'react';
 import {StateBar} from './StateBar/StateBar';
+import {Navigation} from './Navigation/Navigation';
 
 export class Content extends React.Component {
     render() {
@@ -7,7 +8,7 @@ export class Content extends React.Component {
           <main className="main-content">
               <div className="content-wrapper">
                   <StateBar />
-                  {/*<Navigation />*/}
+                  <Navigation />
                   {/*<Servives />*/}
               </div>
           </main>
