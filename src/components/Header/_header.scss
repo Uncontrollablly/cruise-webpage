@@ -4,6 +4,8 @@
   align-items: center;
   background-color: #FFFFFF;
   height: $header-height;
+  box-shadow: 0px 3px 2px #E2E2E2;
+  z-index: 1;
 
   &::before {
     content:"";

@@ -5,7 +5,11 @@ export class Content extends React.Component {
     render() {
         return (
           <main className="main-content">
-              <StateBar />
+              <div className="content-wrapper">
+                  <StateBar />
+                  {/*<Navigation />*/}
+                  {/*<Servives />*/}
+              </div>
           </main>
         );
     }

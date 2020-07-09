@@ -1,6 +1,4 @@
 .state-bar {
-  display: flex;
-  justify-content: space-between;
 
   .state {
     color: white;
@@ -18,3 +16,24 @@
     right: 10px;
   }
 }
+
+.icon-cog {
+  background-color: #FFB900;
+  &:before {
+    animation: spin infinite 2s linear;
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.icon-coffee {
+  background-color: #7FBC39;
+}
+

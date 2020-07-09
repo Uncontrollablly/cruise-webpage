@@ -5,11 +5,11 @@ export class StateBar extends React.Component {
     render() {
         return (
             <div className='state-bar'>
-                <Card name='icon-cog' color='#FFB900'>
+                <Card name='icon-cog'>
                     <div className='state'>Building</div>
                     <div className='state-number'>3</div>
                 </Card>
-                <Card name='icon-coffee' color='#7FBC39'>
+                <Card name='icon-coffee'>
                     <div className='state'>Idle</div>
                     <div className='state-number'>2</div>
                 </Card>
