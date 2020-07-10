@@ -1,4 +1,5 @@
 import React from 'react';
+import {History} from './History/History';
 
 export class Menu extends React.Component {
     render() {
@@ -8,6 +9,7 @@ export class Menu extends React.Component {
                 <button className="icon-sitemap">AGENT</button>
                 <button className="icon-boat">MY CRUISE</button>
                 <button className="icon-life-bouy">HELP</button>
+                <History/>
             </aside>
         );
     }
