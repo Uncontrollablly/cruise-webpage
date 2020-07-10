@@ -1,5 +1,70 @@
 .item {
+  box-sizing: border-box;
   margin-top: 18px;
-  background-color: white;
+  background-color: $white-color;
   height: 110px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  font-size: 14px;
+
+  ::before {
+    font-size: 16px;
+    //margin-right: 11px;
+  }
+
+  &-content {
+    width: 100%;
+    margin-left: 35px;
+
+    .first-line {
+      margin-right: 55px;
+
+      .status {
+        padding-left: 8px;
+        background-color: #7FBC39;
+        color: $white-color;
+      }
+    }
+
+    .second-line {
+      margin-top: 30px;
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          &:not(:first-child) {
+            margin-left: 10px;
+          }
+
+          background-color: $default-light-grey;
+          color: $default-font-color;
+          font-weight: bold;
+
+          button {
+            border-style: none;
+            color: $default-font-color;
+          }
+        }
+      }
+      .icon-plus {
+        background-color: #00B4CF;
+        border-style: none;
+        color: $white-color;
+        display: flex;
+        justify-content: center;
+        &::before {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+
+  img {
+    //margin-left: 15px;
+    height: 80px;
+    width: 80px;
+  }
 }
