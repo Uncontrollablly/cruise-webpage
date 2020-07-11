@@ -17,36 +17,39 @@ export class Item extends React.Component {
         }
     }
 
-    createSourcesList = () =>
-        this.props.resources.map((resource, index) =>
-            <li key={String(this.props.id) + index}>
-                <label>
+    createSourcesList = () => {
+        return this.props.service.resources.map((resource, index) =>
+            <li key={String(this.props.service.id) + index}>
+                <button
+                    className="icon-trash"
+                    onClick={this.props.handleDeleteResource(this.props.service.id, resource)}
+                >
                     {resource}
-                    <button className="icon-trash"/>
-                </label>
+                </button>
             </li>
         );
+    }
 
     render() {
         return (
             <div className="item">
                 <img
-                    src={this.state[this.props.os]}
-                    alt={this.props.os}
+                    src={this.state[this.props.service.os]}
+                    alt={this.props.service.os}
                 />
                 <div className="item-content">
                     <div className="first-line">
                         <div className="icon-desktop">
-                            {this.props.name}
+                            {this.props.service.name}
                         </div>
                         <div className="status">
-                            {this.props.status}
+                            {this.props.service.status}
                         </div>
                         <div className="icon-info">
-                            {this.props.ip}
+                            {this.props.service.ip}
                         </div>
                         <div className="icon-folder">
-                            {this.props.location}
+                            {this.props.service.location}
                         </div>
                     </div>
 
