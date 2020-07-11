@@ -6,13 +6,11 @@ import ubuntu from '../../../../assets/os_icons/ubuntu.png'
 import windows from '../../../../assets/os_icons/windows.png'
 
 export class Item extends React.Component {
-
-    constructor() {
-        super();
-
+    constructor(props) {
+        super(props);
         this.state = {
-            cent_os,
-            debin,
+            centos: cent_os,
+            debian: debin,
             suse,
             ubuntu,
             windows,
@@ -20,8 +18,8 @@ export class Item extends React.Component {
     }
 
     createSourcesList = () =>
-        this.props.resources.map((resource) =>
-            <li>
+        this.props.resources.map((resource, index) =>
+            <li key={String(this.props.id) + index}>
                 <label>
                     {resource}
                     <button className="icon-trash"/>
