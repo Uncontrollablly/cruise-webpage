@@ -18,11 +18,12 @@ export class Item extends React.Component {
     }
 
     createSourcesList = () => {
+        const id = this.props.service.id;
         return this.props.service.resources.map((resource, index) =>
-            <li key={String(this.props.service.id) + index}>
+            <li key={String(id) + index}>
                 <button
                     className="icon-trash"
-                    onClick={this.props.handleDeleteResource(this.props.service.id, resource)}
+                    onClick={this.props.handleDeleteResource(id, resource)}
                 >
                     {resource}
                 </button>
@@ -31,32 +32,33 @@ export class Item extends React.Component {
     }
 
     render() {
+        const {os, name, status, ip, location, id} = this.props.service;
         return (
             <div className="item">
                 <img
-                    src={this.state[this.props.service.os]}
-                    alt={this.props.service.os}
+                    src={this.state[os]}
+                    alt={os}
                 />
                 <div className="item-content">
                     <div className="first-line">
                         <div className="icon-desktop">
-                            {this.props.service.name}
+                            {name}
                         </div>
                         <div className="status">
-                            {this.props.service.status}
+                            {status}
                         </div>
                         <div className="icon-info">
-                            {this.props.service.ip}
+                            {ip}
                         </div>
                         <div className="icon-folder">
-                            {this.props.service.location}
+                            {location}
                         </div>
                     </div>
 
                     <div className="second-line">
                         <ul>
                             <li>
-                                <button className="icon-plus" />
+                                <button className="icon-plus" onClick={this.props.handleClickAdd(id)}/>
                             </li>
                             {this.createSourcesList()}
                         </ul>
