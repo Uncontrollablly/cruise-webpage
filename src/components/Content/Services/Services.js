@@ -3,17 +3,29 @@ import {Item} from './Item/Item';
 import {Modal} from './Modal/Modal';
 
 export class Services extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            services: [],
-            show: false,
-            id: null,
-        };
+    state = {
+        services: [],
+        show: false,
+        id: null,
+        modal: {}
     }
 
     async componentDidMount() {
         await this.fetchServices();
+    }
+
+    handleClickAdd = (id) => {
+        return (e) => {
+            const rectObject = e.target.getBoundingClientRect();
+            this.setState({
+                id,
+                modal: {
+                    x: rectObject.left,
+                    y: rectObject.bottom
+                },
+                show: true,
+            });
+        }
     }
 
     handleDeleteResource = (id, resource) => {
@@ -24,22 +36,52 @@ export class Services extends React.Component {
         }
     }
 
-    modifyResourcesForService = async (id, data) => {
-        const url = `http://localhost:3001/agents/${id}`;
-        await fetch(url,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({resources: data})
-        });
+    handleInputOnChange = (e) => {
+        const resources = this.parseInput(e.target.value);
+        const oldResources = this.getResources(this.state.id);
+        const addButton = document.getElementsByClassName('add')[0];
+        for (let resource of resources) {
+            if (oldResources.includes(resource)) {
+                addButton.disabled = true;
+                return;
+            }
+        }
+        addButton.disabled = false;
+    }
+
+    parseInput = (input) => {
+        return input.split(',');
+    }
+
+    getResources = (id) => {
+        const service = this.state.services.find(service =>
+            service.id === this.state.id);
+        return service.resources;
+    }
+
+    handleAddResources = async () => {
+        const {id} = this.state;
+        const input = document.getElementsByClassName('modal-input')[0].value;
+        const resources = this.parseInput(input);
+        const oldResources = this.getResources(id);
+        const newResources = [...oldResources, ...resources];
+
+        this.changeResources(id, newResources);
+        await this.modifyResourcesForService(id, newResources);
+        this.handleCloseModal();
+    }
+
+    handleCloseModal = () => {
+        this.setState({
+            show: false,
+        })
     }
 
     fetchServices = async () => {
         const response = await fetch("http://localhost:3001/agents/");
         if (response.ok) {
             const services = await response.json();
-            this.setState({ services });
+            this.setState({ services});
         } else {
             console.log("Error: " + response.status);
         }
@@ -61,57 +103,15 @@ export class Services extends React.Component {
         });
     }
 
-    showModal = () => {
-        this.setState({
-            show: true,
-        })
-    }
-
-    closeModal = () => {
-        this.setState({
-            show: false,
-        })
-    }
-
-    parseInput = (input) => {
-        return input.split(',');
-    }
-
-    handleClickAdd = (id) => {
-        return () => {
-            this.showModal();
-            this.setState({id});
-        }
-    }
-
-    handleAddResources = async (e) => {
-        const {id} = this.state;
-        const input = document.getElementsByClassName('modal-input')[0].value;
-        const resources = this.parseInput(input);
-        const oldResources = this.getResources(id);
-        const newResources = [...oldResources, ...resources];
-        this.changeResources(id, newResources);
-        await this.modifyResourcesForService(id, newResources);
-        this.closeModal();
-    }
-
-    getResources = (id) => {
-        const service = this.state.services.find(service =>
-            service.id === this.state.id);
-        return service.resources;
-    }
-
-    handleOnChange = (e) => {
-        const resources = this.parseInput(e.target.value);
-        const oldResources = this.getResources(this.state.id);
-        const addButton = document.getElementsByClassName('add')[0];
-        for (let resource of resources) {
-            if (oldResources.includes(resource)) {
-                addButton.disabled = true;
-                return;
-            }
-        }
-        addButton.disabled = false;
+    modifyResourcesForService = async (id, data) => {
+        const url = `http://localhost:3001/agents/${id}`;
+        await fetch(url,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({resources: data})
+        });
     }
 
     render() {
@@ -121,17 +121,17 @@ export class Services extends React.Component {
                     <Item
                         service={service}
                         key={service.id}
-                        handleDeleteResource={this.handleDeleteResource}
-                        showModal={this.showModal}
                         handleClickAdd={this.handleClickAdd}
+                        handleDeleteResource={this.handleDeleteResource}
                     />
                 ))}
                 <Modal
                     show={this.state.show}
-                    handleClickClose={this.closeModal}
-                    handleClickAdd={this.handleClickAdd}
-                    handleOnChange={this.handleOnChange}
+                    x={this.state.modal.x}
+                    y={this.state.modal.y}
+                    handleInputOnChange={this.handleInputOnChange}
                     handleAddResources={this.handleAddResources}
+                    handleCloseModal={this.handleCloseModal}
                 />
             </section>
         );
