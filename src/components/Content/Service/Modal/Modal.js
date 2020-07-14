@@ -35,7 +35,7 @@ export class Modal extends React.PureComponent {
                         <input
                             className='modal-input'
                             type="text"
-                            placeholder="Input value"
+                            placeholder="    Input value"
                             onChange={this.props.handleInputOnChange}
                         />
                     </div>

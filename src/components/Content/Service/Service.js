@@ -18,8 +18,8 @@ export class Service extends React.Component {
         return (e) => {
             const width = e.target.offsetWidth;
             const height = e.target.offsetHeight;
-            const x = e.target.offsetLeft + width/2;
-            const y = e.target.offsetTop + height;
+            const x = e.target.offsetLeft + width/2 - 67;
+            const y = e.target.offsetTop + height + 20;
             this.setState({
                 id,
                 modal: {
