@@ -1,0 +1,15 @@
+.service {
+  position: relative;
+
+  .first-line {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .second-line {
+    ul,
+    li {
+      display: inline-block;
+    }
+  }
+}

@@ -5,6 +5,7 @@ export class Modal extends React.PureComponent {
         if (this.props.show) {
             const modal = document.getElementsByClassName('modal')[0];
             // console.log(this.props.x, this.props.y);
+            // const top = this.props.y + window.scrollY;
             modal.style.left = this.props.x + 'px';
             modal.style.top = this.props.y + 'px';
         }

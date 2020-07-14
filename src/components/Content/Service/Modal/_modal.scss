@@ -1,0 +1,30 @@
+.modal {
+  position: absolute;
+  background: white;
+  min-width: 500px;
+  border-radius: 4px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid $white-color;
+    left: 10%;/*调整小三角形的位置*/
+    bottom: 100%;/*调整小三角形的位置*/
+  }
+
+  //position: relative;
+  //top: 0;
+  //right: 0;
+  //bottom: 0;
+  //left: 0;
+
+
+  //&-container {
+  //  position: fixed;
+  //  background: white;
+  //  min-width: 500px;
+  //  border-radius: 4px;
+  //}
+}

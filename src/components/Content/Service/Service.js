@@ -2,7 +2,7 @@ import React from 'react';
 import {Item} from './Item/Item';
 import {Modal} from './Modal/Modal';
 
-export class Services extends React.Component {
+export class Service extends React.Component {
     state = {
         services: [],
         show: false,
@@ -16,12 +16,15 @@ export class Services extends React.Component {
 
     handleClickAdd = (id) => {
         return (e) => {
-            const rectObject = e.target.getBoundingClientRect();
+            const width = e.target.offsetWidth;
+            const height = e.target.offsetHeight;
+            const x = e.target.offsetLeft + width/2;
+            const y = e.target.offsetTop + height;
             this.setState({
                 id,
                 modal: {
-                    x: rectObject.left,
-                    y: rectObject.bottom
+                    x,
+                    y,
                 },
                 show: true,
             });
@@ -116,7 +119,7 @@ export class Services extends React.Component {
 
     render() {
         return (
-            <section>
+            <section className='service'>
                 {this.state.services?.map(service => (
                     <Item
                         service={service}
