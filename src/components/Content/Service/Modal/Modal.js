@@ -4,19 +4,17 @@ export class Modal extends React.PureComponent {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.show) {
             const modal = document.getElementsByClassName('modal')[0];
-            // console.log(this.props.x, this.props.y);
-            // const top = this.props.y + window.scrollY;
             modal.style.left = this.props.x + 'px';
             modal.style.top = this.props.y + 'px';
         }
     }
 
     componentDidMount() {
-        document.addEventListener('click', this.closeWhenClickOtherArea)
+        document.addEventListener('click', this.closeWhenClickOtherArea);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.closeWhenClickOtherArea)
+        document.removeEventListener('click', this.closeWhenClickOtherArea);
     }
 
     closeWhenClickOtherArea = (e) => {

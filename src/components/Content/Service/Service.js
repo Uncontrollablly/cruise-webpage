@@ -16,10 +16,7 @@ export class Service extends React.Component {
 
     handleClickAdd = (id) => {
         return (e) => {
-            const width = e.target.offsetWidth;
-            const height = e.target.offsetHeight;
-            const x = e.target.offsetLeft + width/2 - 67;
-            const y = e.target.offsetTop + height + 20;
+            const [x, y] = this.computeModalPosition(e.target);
             this.setState({
                 id,
                 modal: {
@@ -31,12 +28,49 @@ export class Service extends React.Component {
         }
     }
 
+    computeModalPosition = (button) => {
+        const modalWidth = 570;
+        const halfTriangleWidth = 10;
+        const buttonWidth = button.offsetWidth;
+        const buttonHeight = button.offsetHeight;
+        const x = button.offsetLeft + buttonWidth/2 - (modalWidth/10 + halfTriangleWidth);
+        const y = button.offsetTop + buttonHeight + 2 * halfTriangleWidth;
+        return [x, y];
+    }
+
     handleDeleteResource = (id, resource) => {
         return async () => {
             const newResources = this.getResourcesAfterDeleted(id, resource);
             this.changeResources(id, newResources);
             await this.modifyResourcesForService(id, newResources);
         }
+    }
+
+    getResourcesAfterDeleted = (id, resource) => {
+        const service = this.state.services.find(service => service.id === id);
+        const index = service.resources.indexOf(resource);
+        service.resources.splice(index, 1);
+        return service.resources;
+    }
+
+    // 替换指定id的service的resources
+    changeResources = (id, resources) => {
+        this.setState({
+            services: this.state.services.map(service =>
+                service.id === id ? {...service, resources: resources} : service
+            )
+        });
+    }
+
+    modifyResourcesForService = async (id, data) => {
+        const url = `http://localhost:3001/agents/${id}`;
+        await fetch(url,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({resources: data})
+        });
     }
 
     handleInputOnChange = (e) => {
@@ -88,33 +122,6 @@ export class Service extends React.Component {
         } else {
             console.log("Error: " + response.status);
         }
-    }
-
-    getResourcesAfterDeleted = (id, resource) => {
-        const service = this.state.services.find(service => service.id === id);
-        const index = service.resources.indexOf(resource);
-        service.resources.splice(index, 1);
-        return service.resources;
-    }
-
-    // 替换指定id的service的resources
-    changeResources = (id, resources) => {
-        this.setState({
-            services: this.state.services.map(service =>
-                service.id === id ? {...service, resources: resources} : service
-            )
-        });
-    }
-
-    modifyResourcesForService = async (id, data) => {
-        const url = `http://localhost:3001/agents/${id}`;
-        await fetch(url,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({resources: data})
-        });
     }
 
     render() {
