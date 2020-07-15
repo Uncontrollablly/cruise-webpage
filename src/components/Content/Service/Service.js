@@ -4,21 +4,20 @@ import {Modal} from './Modal/Modal';
 
 export class Service extends React.Component {
     state = {
-        services: [],
         show: false,
-        id: null,
+        idOnHandle: null,
         modal: {}
     }
 
-    async componentDidMount() {
-        await this.fetchServices();
-    }
+    getResourcesAfterDeleted = this.props.serviceOperations.getResourcesAfterDeleted;
+    changeResources = this.props.serviceOperations.changeResources;
+    modifyServicesData = this.props.serviceOperations.modifyServicesData;
 
     handleClickAdd = (id) => {
         return (e) => {
             const [x, y] = this.computeModalPosition(e.target);
             this.setState({
-                id,
+                idOnHandle: id,
                 modal: {
                     x,
                     y,
@@ -42,70 +41,8 @@ export class Service extends React.Component {
         return async () => {
             const newResources = this.getResourcesAfterDeleted(id, resource);
             this.changeResources(id, newResources);
-            await this.modifyResourcesForService(id, newResources);
+            await this.modifyServicesData(id, newResources);
         }
-    }
-
-    getResourcesAfterDeleted = (id, resource) => {
-        const service = this.state.services.find(service => service.id === id);
-        const index = service.resources.indexOf(resource);
-        service.resources.splice(index, 1);
-        return service.resources;
-    }
-
-    // 替换指定id的service的resources
-    changeResources = (id, resources) => {
-        this.setState({
-            services: this.state.services.map(service =>
-                service.id === id ? {...service, resources: resources} : service
-            )
-        });
-    }
-
-    modifyResourcesForService = async (id, data) => {
-        const url = `http://localhost:3001/agents/${id}`;
-        await fetch(url,{
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({resources: data})
-        });
-    }
-
-    handleInputOnChange = (e) => {
-        const resources = this.parseInput(e.target.value);
-        const oldResources = this.getResources(this.state.id);
-        const addButton = document.getElementsByClassName('add')[0];
-        for (let resource of resources) {
-            if (oldResources.includes(resource)) {
-                addButton.disabled = true;
-                return;
-            }
-        }
-        addButton.disabled = false;
-    }
-
-    parseInput = (input) => {
-        return input.split(',');
-    }
-
-    getResources = (id) => {
-        const service = this.state.services.find(service =>
-            service.id === this.state.id);
-        return service.resources;
-    }
-
-    handleAddResources = async () => {
-        const {id} = this.state;
-        const input = document.getElementsByClassName('modal-input')[0].value;
-        const resources = this.parseInput(input);
-        const oldResources = this.getResources(id);
-        const newResources = [...oldResources, ...resources];
-
-        this.changeResources(id, newResources);
-        await this.modifyResourcesForService(id, newResources);
-        this.handleCloseModal();
     }
 
     handleCloseModal = () => {
@@ -114,20 +51,10 @@ export class Service extends React.Component {
         })
     }
 
-    fetchServices = async () => {
-        const response = await fetch("http://localhost:3001/agents/");
-        if (response.ok) {
-            const services = await response.json();
-            this.setState({ services});
-        } else {
-            console.log("Error: " + response.status);
-        }
-    }
-
     render() {
         return (
             <section className='service'>
-                {this.state.services?.map(service => (
+                {this.props.services?.map(service => (
                     <Item
                         service={service}
                         key={service.id}
@@ -139,8 +66,8 @@ export class Service extends React.Component {
                     show={this.state.show}
                     x={this.state.modal.x}
                     y={this.state.modal.y}
-                    handleInputOnChange={this.handleInputOnChange}
-                    handleAddResources={this.handleAddResources}
+                    idOnHandle={this.state.idOnHandle}
+                    serviceOperations={this.props.serviceOperations}
                     handleCloseModal={this.handleCloseModal}
                 />
             </section>

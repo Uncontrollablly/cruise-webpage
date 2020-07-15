@@ -23,8 +23,9 @@
     box-sizing: border-box;
     width: 542px;
     height: 36px;
-    padding: 0px;
+    padding: 8px 16px;
     margin: 0px;
+    color: #00B4CF;
 
     &::placeholder {
       color: #5E5E5E;
@@ -52,6 +53,9 @@
 
   .add {
     background-color: #00B4CF;
+    &:disabled {
+      background-color: #A1A1A1;
+    }
   }
 
   .cancel {
@@ -81,7 +85,7 @@
     border-left: 9px solid transparent;
     border-right: 9px solid transparent;
     border-bottom: 18px solid $white-color;
-    left: calc(10% + 1px);/*调整小三角形的位置*/
-    bottom: 100%;/*调整小三角形的位置*/
+    left: calc(10% + 1px);
+    bottom: 100%;
   }
 }
