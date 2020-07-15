@@ -3,13 +3,19 @@ import React from 'react';
 export class Modal extends React.PureComponent {
     state = {
         disabled: true,
+        input: null,
     }
+
+    modalRef = React.createRef();
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.show) {
-            const modal = document.getElementsByClassName('modal')[0];
-            modal.style.left = this.props.x + 'px';
-            modal.style.top = this.props.y + 'px';
+            const modal = this.modalRef.current;
+            const cssText = `
+                left: ${this.props.x}px;
+                top: ${this.props.y}px;    
+            `;
+            modal.style.cssText = cssText;
         }
     }
 
@@ -37,13 +43,15 @@ export class Modal extends React.PureComponent {
         if (e.target.value === "") {
             disabled = true;
         }
-        this.setState({disabled});
+        this.setState({
+            disabled,
+            input: e.target.value
+        });
     }
 
     handleAddResources = async () => {
         const {idOnHandle} = this.props;
-        const input = document.getElementsByClassName('modal-input')[0].value;
-        const resources = this.parseInput(input);
+        const resources = this.parseInput(this.state.input);
         const oldResources = this.getResources(idOnHandle);
         const newResources = [...oldResources, ...resources];
         this.changeResources(idOnHandle, newResources);
@@ -64,7 +72,7 @@ export class Modal extends React.PureComponent {
 
     render() {
         return this.props.show && (
-            <div className='modal'>
+            <div className='modal' ref={this.modalRef}>
                     <div className='modal-content'>
                         <button className='icon-close' onClick={this.props.handleCloseModal}/>
                         <p>Separate multiple resource name with commas</p>

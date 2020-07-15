@@ -10,7 +10,6 @@
 
   ::before {
     font-size: 16px;
-    //margin-right: 11px;
   }
 
   &-content {
@@ -62,10 +61,12 @@
   }
 
   .building {
+    color: $white-color;
     background-color: #FF9A2A;
   }
 
   .idle {
+    color: $white-color;
     background-color: #7FBC39;
   }
 
