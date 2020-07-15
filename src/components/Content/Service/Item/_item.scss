@@ -61,9 +61,15 @@
     }
   }
 
+  .building {
+    background-color: #FF9A2A;
+  }
+
+  .idle {
+    background-color: #7FBC39;
+  }
 
   img {
-    //margin-left: 15px;
     height: 80px;
     width: 80px;
   }

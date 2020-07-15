@@ -3,7 +3,7 @@ import React from 'react';
 export class History extends React.Component {
     render() {
         return (
-            <div>
+            <section className='history'>
                 <header>
                     History
                 </header>
@@ -15,7 +15,7 @@ export class History extends React.Component {
                     <li>bjstdmngbgr06.thoughtworks.com</li>
                     <li>bjstdmngbgr07.thoughtworks.com</li>
                 </ul>
-            </div>
+            </section>
         )
     }
 }

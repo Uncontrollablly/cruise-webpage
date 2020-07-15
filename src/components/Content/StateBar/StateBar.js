@@ -7,11 +7,11 @@ export class StateBar extends React.Component {
             <div className='state-bar'>
                 <Card name='icon-cog'>
                     <div className='state'>Building</div>
-                    <div className='state-number'>3</div>
+                    <div className='state-number'>{this.props.status.building}</div>
                 </Card>
                 <Card name='icon-coffee'>
                     <div className='state'>Idle</div>
-                    <div className='state-number'>2</div>
+                    <div className='state-number'>{this.props.status.idle}</div>
                 </Card>
                 <Card>
                     <table>
@@ -25,8 +25,8 @@ export class StateBar extends React.Component {
                         <tbody>
                             <tr>
                                 <td>8</td>
-                                <td>4</td>
-                                <td>4</td>
+                                <td>{this.props.types.physical}</td>
+                                <td>{this.props.types.virtual}</td>
                             </tr>
                         </tbody>
                     </table>

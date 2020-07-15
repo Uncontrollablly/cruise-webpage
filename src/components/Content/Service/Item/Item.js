@@ -44,7 +44,7 @@ export class Item extends React.Component {
                         <div className="icon-desktop">
                             {name}
                         </div>
-                        <div className="status">
+                        <div className={status}>
                             {status}
                         </div>
                         <div className="icon-info">

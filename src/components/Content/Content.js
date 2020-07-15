@@ -6,21 +6,54 @@ import {Service} from './Service/Service';
 export class Content extends React.Component {
     state = {
         services: [],
-        idOnChange: null,
-        building: 0,
-        idle: 0,
+        status: {
+            building: 0,
+            idle: 0,
+        },
+        types: {
+            virtual: 0,
+            physical: 0,
+        }
     }
 
     async componentDidMount() {
         await this.fetchServicesData();
+        this.computeStatusNumber();
+        this.computeTypesNumber();
     }
 
     computeStatusNumber = () => {
-
+        const reducer = status => (number, cur) => {
+            if (cur.status === status) {
+                number += 1;
+            }
+            return number;
+        }
+        const buildingStatusNumber = this.state.services.reduce(reducer("building"), 0);
+        const idleStatusNumber = this.state.services.reduce(reducer("idle"), 0);
+        this.setState({
+            status: {
+                building: buildingStatusNumber,
+                idle: idleStatusNumber,
+            }
+        });
     }
 
     computeTypesNumber = () => {
-
+        const reducer = type => (number, cur) => {
+            if (cur.type === type) {
+                number += 1;
+            }
+            return number;
+        }
+        const virtualTypeNumber = this.state.services.reduce(reducer("virtual"), 0);
+        const physicalTypeNumber = this.state.services.reduce(reducer("physical"), 0);
+        this.setState({
+            type: {
+                virtual: virtualTypeNumber,
+                physical: physicalTypeNumber,
+            }
+        });
     }
 
     fetchServicesData = async () => {
@@ -77,7 +110,10 @@ export class Content extends React.Component {
         return (
           <main className="main-content">
               <div className="content-wrapper">
-                  <StateBar />
+                  <StateBar
+                      status={this.state.status}
+                      types={this.state.types}
+                  />
                   <Navigation />
                   <Service
                       services={this.state.services}

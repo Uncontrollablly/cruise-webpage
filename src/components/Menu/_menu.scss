@@ -4,6 +4,7 @@
   flex-direction: column;
   width: 300px;
   z-index: 2;
+  position: relative;
 
   button {
     font-size: $menu-font-size;
