@@ -7,12 +7,12 @@ export class Navigation extends React.Component {
 
     onClick = (e) => {
         if (!e.target.classList.contains(this.state.checkedButton)) {
-            e.target.classList.add('checked');
             const oldButton = document.getElementsByClassName(this.state.checkedButton)[0];
             oldButton.classList.remove('checked');
             this.setState({
                 checkedButton: e.target.className,
             });
+            e.target.classList.add('checked');
         }
     }
 
