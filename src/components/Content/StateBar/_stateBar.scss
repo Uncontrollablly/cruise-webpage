@@ -6,34 +6,78 @@
     position: absolute;
     top: 10px;
     left: 5px;
+
+    &::before {
+      font-size: 144px;
+      text-align: center;
+      color: $white-color;
+      opacity: 20%;
+      position: absolute;
+      top: -20px;
+      left: 63px;
+    }
   }
 
-  .state-number {
+  .icon-cog {
+    &::before {
+      animation: spin infinite 2s linear;
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+
+  .number {
     font-size: 48px;
     color: white;
     position: absolute;
     bottom: 5px;
     right: 10px;
   }
-}
 
-.icon-cog {
-  background-color: #FFB900;
-  &:before {
-    animation: spin infinite 2s linear;
+  .building {
+    background-color: #FFB900;
+  }
 
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+  .idle {
+    background-color: #7FBC39;
+  }
+
+  .types {
+    position: relative;
+  }
+
+  .types-table {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100%;
+
+    td {
+      text-align: center;
+      vertical-align: center;
+    }
+
+    .types-name {
+      font-size: 12px;
+      height: 50%;
+    }
+
+    .types-number {
+      font-size: 20px;
+      font-weight: bold;
+      height: 50%;
     }
   }
 }
 
-.icon-coffee {
-  background-color: #7FBC39;
-}
+
 

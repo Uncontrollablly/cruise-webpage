@@ -5,26 +5,24 @@ export class StateBar extends React.Component {
     render() {
         return (
             <div className='state-bar'>
-                <Card name='icon-cog'>
-                    <div className='state'>Building</div>
-                    <div className='state-number'>{this.props.status.building}</div>
+                <Card className='building'>
+                    <div className='state icon-cog'>Building</div>
+                    <div className='number'>{this.props.status.building}</div>
                 </Card>
-                <Card name='icon-coffee'>
-                    <div className='state'>Idle</div>
-                    <div className='state-number'>{this.props.status.idle}</div>
+                <Card className='idle'>
+                    <div className='state icon-coffee'>Idle</div>
+                    <div className='number'>{this.props.status.idle}</div>
                 </Card>
-                <Card>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ALL</th>
-                                <th>PHYSICAL</th>
-                                <th>VIRTUAL</th>
-                            </tr>
-                        </thead>
+                <Card className='types'>
+                    <table className='types-table'>
                         <tbody>
-                            <tr>
-                                <td>8</td>
+                            <tr className='types-name'>
+                                <td>ALL</td>
+                                <td>PHYSICAL</td>
+                                <td>VIRTUAL</td>
+                            </tr>
+                            <tr className='types-number'>
+                                <td>{this.props.types.physical+this.props.types.virtual}</td>
                                 <td>{this.props.types.physical}</td>
                                 <td>{this.props.types.virtual}</td>
                             </tr>

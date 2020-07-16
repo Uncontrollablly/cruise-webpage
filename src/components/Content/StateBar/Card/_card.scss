@@ -9,14 +9,4 @@
   height: 118px;
   position: relative;
   background-color: $white-color;
-
-  &:before {
-    font-size: 144px;
-    text-align: center;
-    color: $white-color;
-    opacity: 20%;
-    position: absolute;
-    top: -20px;
-    left: 63px;
-  }
 }

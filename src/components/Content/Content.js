@@ -49,7 +49,7 @@ export class Content extends React.Component {
         const virtualTypeNumber = this.state.services.reduce(reducer("virtual"), 0);
         const physicalTypeNumber = this.state.services.reduce(reducer("physical"), 0);
         this.setState({
-            type: {
+            types: {
                 virtual: virtualTypeNumber,
                 physical: physicalTypeNumber,
             }
