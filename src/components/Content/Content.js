@@ -1,7 +1,7 @@
 import React from 'react';
-import {StateBar} from './StateBar/StateBar';
-import {Navigation} from './Navigation/Navigation';
-import {Service} from './Service/Service';
+import {StateBar} from '../StateBar/StateBar';
+import {Navigation} from '../Navigation/Navigation';
+import {Service} from '../Service/Service';
 
 export class Content extends React.Component {
     state = {
