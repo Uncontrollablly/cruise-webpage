@@ -1,9 +1,9 @@
 import React from 'react';
-import cent_os from '../../../../assets/os_icons/cent_os.png'
-import debin from '../../../../assets/os_icons/debin.png'
-import suse from '../../../../assets/os_icons/suse.png'
-import ubuntu from '../../../../assets/os_icons/ubuntu.png'
-import windows from '../../../../assets/os_icons/windows.png'
+import cent_os from '../../assets/os_icons/cent_os.png'
+import debin from '../../assets/os_icons/debin.png'
+import suse from '../../assets/os_icons/suse.png'
+import ubuntu from '../../assets/os_icons/ubuntu.png'
+import windows from '../../assets/os_icons/windows.png'
 
 export class Item extends React.Component {
     constructor(props) {

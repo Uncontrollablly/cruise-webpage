@@ -1,6 +1,6 @@
 import React from 'react';
-import {Item} from './Item/Item';
-import {Modal} from './Modal/Modal';
+import {Item} from '../Item/Item';
+import {Modal} from '../Modal/Modal';
 
 export class Service extends React.Component {
     state = {

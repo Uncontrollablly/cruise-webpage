@@ -1,5 +1,5 @@
 import React from 'react';
-import {History} from './History/History';
+import {History} from '../History/History';
 
 export class Menu extends React.Component {
     render() {
