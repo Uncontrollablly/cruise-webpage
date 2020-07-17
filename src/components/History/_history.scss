@@ -1,10 +1,7 @@
 .history {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  margin-top: auto;
 
-  header {
+  &-title {
     font-size: 24px;
     color: #CCC;
   }
