@@ -1,11 +1,5 @@
-.cruise {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .content {
-  flex: 1;
+  margin-top: $header-height;
   display: flex;
   justify-content: center;
   background-color: $default-light-grey;

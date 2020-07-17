@@ -12,11 +12,9 @@
 @import "src/components/Footer/footer";
 @import "src/app";
 
-html,
 body,
 #root {
   margin: 0;
-  height: 100%;
   font-family: $default-font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
