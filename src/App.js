@@ -6,14 +6,14 @@ import {Footer} from './components/Footer/Footer';
 
 function App() {
   return (
-      <div className="cruise">
+      <>
         <Header />
-        <div className="content">
+        <div className='content'>
             <Menu />
             <Content />
         </div>
         <Footer />
-      </div>
+      </>
   );
 }
 

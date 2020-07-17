@@ -11,6 +11,7 @@
   ::before {
     font-size: 20px;
     color: #9A9A9A;
+    margin-right: 10px;
   }
 
   &-content {
@@ -20,6 +21,11 @@
     .first-line {
       margin-right: 55px;
 
+      div {
+        display: flex;
+        align-items: center;
+      }
+
       .status {
         padding-left: 8px;
         background-color: #7FBC39;
@@ -27,7 +33,7 @@
       }
 
       .icon-desktop {
-        color: #00B4CF;
+        color: $default-light-blue;
         font-weight: bold;
       }
     }
@@ -59,7 +65,7 @@
       }
 
       .icon-plus {
-        background-color: #00B4CF;
+        background-color: $default-light-blue;
         border-style: none;
         display: flex;
         justify-content: center;

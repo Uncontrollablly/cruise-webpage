@@ -1,30 +1,37 @@
-.Menu {
+.menu {
   background-color: $menu-background-color;
   display: flex;
   flex-direction: column;
   width: 300px;
-  position: relative;
 
-  button {
-    font-size: $menu-font-size;
-    color: $white-color;
-    text-align: start;
-    height: $menu-button-height;
-    padding: 5px 32px;
-    background: transparent;
-    border-style: none;
+  &-container {
+    position: sticky;
+    top: $header-height;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px - 30px);
 
-    &:hover {
-      color: $hover-font-color;
-      background-color: $menu-hover-button-color;
-    }
+    button {
+      font-size: $menu-font-size;
+      color: $white-color;
+      text-align: start;
+      height: $menu-button-height;
+      padding: 5px 32px;
+      background: transparent;
+      border-style: none;
 
-    &::before {
-      margin-right: 15px;
-    }
+      &:hover {
+        color: $hover-font-color;
+        background-color: $menu-hover-button-color;
+      }
 
-    &:first-child {
-      margin-top: 20px;
+      &::before {
+        margin-right: 15px;
+      }
+
+      &:first-child {
+        margin-top: 20px;
+      }
     }
   }
 }

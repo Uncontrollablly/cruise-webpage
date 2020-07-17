@@ -4,7 +4,7 @@ export class History extends React.Component {
     render() {
         return (
             <section className='history'>
-                <header>
+                <header className='history-title'>
                     History
                 </header>
                 <ul>
@@ -13,6 +13,8 @@ export class History extends React.Component {
                     <li>bjstdmngbgr04.thoughtworks.com</li>
                     <li>bjstdmngbgr05.thoughtworks.com</li>
                     <li>bjstdmngbgr06.thoughtworks.com</li>
+                    <li>bjstdmngbgr07.thoughtworks.com</li>
+                    <li>bjstdmngbgr07.thoughtworks.com</li>
                     <li>bjstdmngbgr07.thoughtworks.com</li>
                 </ul>
             </section>
