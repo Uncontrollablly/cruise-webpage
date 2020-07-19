@@ -1,4 +1,5 @@
 import React from 'react';
+import {HistoryContext} from "../../history-context";
 
 export class History extends React.Component {
     render() {
@@ -7,16 +8,13 @@ export class History extends React.Component {
                 <header className='history-title'>
                     History
                 </header>
-                <ul>
-                    <li>bjstdmngbgr02.thoughtworks.com</li>
-                    <li>bjstdmngbgr03.thoughtworks.com</li>
-                    <li>bjstdmngbgr04.thoughtworks.com</li>
-                    <li>bjstdmngbgr05.thoughtworks.com</li>
-                    <li>bjstdmngbgr06.thoughtworks.com</li>
-                    <li>bjstdmngbgr07.thoughtworks.com</li>
-                    <li>bjstdmngbgr07.thoughtworks.com</li>
-                    <li>bjstdmngbgr07.thoughtworks.com</li>
-                </ul>
+                <HistoryContext.Consumer>
+                    {context =>
+                        <ul>
+                            {context.historyList.map((history, index) => <li key={index}>{history}</li>)}
+                        </ul>
+                    }
+                </HistoryContext.Consumer>
             </section>
         )
     }
