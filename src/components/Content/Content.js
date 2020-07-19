@@ -2,6 +2,7 @@ import React from 'react';
 import {StateBar} from '../StateBar/StateBar';
 import {Navigation} from '../Navigation/Navigation';
 import {Service} from '../Service/Service';
+import {HistoryContext} from "../../history-context";
 
 export class Content extends React.Component {
     state = {
@@ -115,10 +116,16 @@ export class Content extends React.Component {
                       types={this.state.types}
                   />
                   <Navigation />
-                  <Service
-                      services={this.state.services}
-                      serviceOperations={this.serviceOperations}
-                  />
+                  <HistoryContext.Consumer>
+                      {context =>
+                          <Service
+                          services={this.state.services}
+                          serviceOperations={this.serviceOperations}
+                          addHistory={context.addHistory}
+                          />
+                      }
+                  </HistoryContext.Consumer>
+
               </div>
           </main>
         );

@@ -39,6 +39,7 @@ export class Service extends React.Component {
 
     handleDeleteResource = (id, resource) => {
         return async () => {
+            this.props.addHistory(this.props.services.find(service => service.id === id).name)
             const newResources = this.getResourcesAfterDeleted(id, resource);
             this.changeResources(id, newResources);
             await this.modifyServicesData(id, newResources);
